@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Wall Fee Calculator</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX7C_11_CLWRiHnsqfdDPunZDQJdK4-l0&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="index.js" defer></script>
+    </head>
+<body>
+    <div class="card">
+        <h2>Flower Wall Fee Calculator</h2>
+
+        <label for="customerAddress">Enter Hosting Address:</label>
+        <input type="text" id="customerAddress" placeholder="Address Here">
+
+        <label for="hours">For how many hours?</label>
+        <input type="number" id="hours" min="1" max="12" placeholder="e.g. 2">
+
+        <label>Add neon LED sign?</label>
+        <input type="checkbox" id="includeSign">
+
+        <label for="outdoorEvent">Is this an outdoor event?</label>
+        <input type="checkbox" id="outdoorEvent">
+
+
+        <label for="discountCode">Have a discount code?</label>
+        <input type="text" id="discountCode" placeholder="Enter code here">
+
+        <button onclick="calculateTotalCost()">Calculate Total</button>
+
+        <div class="result" id="result"></div>
+
+        <div>
+            <a id="contactBtn" href="https://links.arelysflowersplantsandgifts.com/" 
+                class="contact-btn" style="display: none;"> Contact Us
+            </a>
+
+            <label class="switch" style="display: inline-block; margin-left: 1rem;">
+                <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+
+        <div class="petal-container">
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+        </div>
+    </div>
+</body>
+</html>
