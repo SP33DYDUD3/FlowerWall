@@ -106,11 +106,11 @@ function calculateTotalCost() {
             resultDiv.innerHTML = `
                 <div class="fee-row type-line"><span>Distance: ${distanceMiles} miles</span><span>$${deliveryFee}</span></div>
                 <div class="fee-row type-line"><span>Rental: ${hours} hour(s)</span><span>$${rentalFee}</span></div>
-                <div class="fee-row type-line"><span>Installation Fee</span>
+                <div class="fee-row type-line"><span>Installation Fee:</span>
                     <span>${hours >= 10 && hours <= 12 ? `<s>$${installationFee}</s> $0` : `$${installationFee}`}</span>
                 </div>
                 <div class="fee-row type-line"><span>LED Sign:</span><span>$${signFee}</span></div>
-                <div class="fee-row type-line"><span>Outdoor Event</span><span>$${outdoorFee}</span></div>
+                <div class="fee-row type-line"><span>Outdoor Event:</span><span>$${outdoorFee}</span></div>
                 ${applyDiscount ? `<div class="fee-row type-line" style="color: green;"><span>10% Discount</span><span>- $${discount.toFixed(2)}</span></div>` : ''}
                 ${manualCodeDiscount > 0 ? `<div class="fee-row type-line" style="color: green;"><span>Code Discount (10%)</span><span>- $${manualCodeDiscount.toFixed(2)}</span></div>` : ''}
                 ${invalidCode ? `<div class="fee-row type-line" style="color: crimson;"><span>Invalid Code</span><span>${discountCode}</span></div>` : ''}
