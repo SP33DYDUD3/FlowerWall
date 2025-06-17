@@ -53,7 +53,15 @@ function calculateTotalCost() {
         return;
     }
 
-    let rentalFee = hours * 75;
+    let rentalFee = 0;
+
+    if (hours >= 1 && hours <= 2) {
+        rentalFee = 100;
+    } else if (hours >= 3 && hours <= 5) {
+        rentalFee = 200;
+    } else if (hours >= 6 && hours <= 12) {
+        rentalFee = 250;
+    }
 
     const service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
@@ -73,46 +81,34 @@ function calculateTotalCost() {
             const distanceMiles = parseFloat(distanceText.replace("mi", "").trim());
             const deliveryFee = Math.round(distanceMiles * 4);
 
-            const appliedInstallationFee = (hours >= 10 && hours <= 12) ? 0 : installationFee;
+            const appliedInstallationFee = installationFee;
             const subtotal = rentalFee + deliveryFee + appliedInstallationFee + signFee + outdoorFee;
 
-            let discount = 0;
-            let applyDiscount = false;
-            let waiveInstallationFee = false;
-
-            if (hours >= 7 && hours <= 9) {
-                discount = subtotal * 0.10;
-                applyDiscount = true;
-            } else if (hours >= 10 && hours <= 12) {
-                discount = subtotal * 0.10;
-                applyDiscount = true;
-                waiveInstallationFee = true;
-            }
-
-            let subtotalAfterAutoDiscount = subtotal - discount;
+            let subtotalAfterAutoDiscount = subtotal;
 
             let manualCodeDiscount = 0;
             let invalidCode = false;
 
-            if (discountCode === "earlybird") {
-                manualCodeDiscount = subtotalAfterAutoDiscount * 0.10; 
+            const discountCodes = {
+                "earlybird": 0.10,
+                "hostmyevent": 0.75
+            };
+
+            if (discountCode in discountCodes) {
+                manualCodeDiscount = subtotalAfterAutoDiscount * discountCodes[discountCode];
             } else if (discountCode !== "") {
                 invalidCode = true;
             }
 
             const total = subtotalAfterAutoDiscount - manualCodeDiscount;
 
-
             resultDiv.innerHTML = `
                 <div class="fee-row type-line"><span>Distance: ${distanceMiles} miles</span><span>$${deliveryFee}</span></div>
                 <div class="fee-row type-line"><span>Rental: ${hours} hour(s)</span><span>$${rentalFee}</span></div>
-                <div class="fee-row type-line"><span>Installation Fee:</span>
-                    <span>${hours >= 10 && hours <= 12 ? `<s>$${installationFee}</s> $0` : `$${installationFee}`}</span>
-                </div>
+                <div class="fee-row type-line"><span>Installation Fee:</span><span>$${installationFee}</span></div>
                 <div class="fee-row type-line"><span>LED Sign:</span><span>$${signFee}</span></div>
                 <div class="fee-row type-line"><span>Outdoor Event:</span><span>$${outdoorFee}</span></div>
-                ${applyDiscount ? `<div class="fee-row type-line" style="color: green;"><span>10% Discount</span><span>- $${discount.toFixed(2)}</span></div>` : ''}
-                ${manualCodeDiscount > 0 ? `<div class="fee-row type-line" style="color: green;"><span>Code Discount (10%)</span><span>- $${manualCodeDiscount.toFixed(2)}</span></div>` : ''}
+                ${manualCodeDiscount > 0 ? `<div class="fee-row type-line" style="color: green;"><span>Code Discount (${(discountCodes[discountCode] * 100).toFixed(0)}%)</span><span>- $${manualCodeDiscount.toFixed(2)}</span></div>` : ''}
                 ${invalidCode ? `<div class="fee-row type-line" style="color: crimson;"><span>Invalid Code</span><span>${discountCode}</span></div>` : ''}
                 <div class="fee-total type-line"><strong>Total:</strong><strong>$${total.toFixed(2)}</strong></div>
             `;
