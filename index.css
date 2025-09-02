@@ -108,6 +108,21 @@ button:hover {
     transform: translateY(0);
 }
 
+.checkbox-row {
+    display: flex;
+    align-items: center;      /* vertically center the checkbox */
+    justify-content: space-between; /* question on left, checkbox on right */
+    margin-top: 1.5rem;
+}
+
+.checkbox-row label {
+    margin: 0;                /* remove default top/bottom margins */
+    font-weight: bold;
+}
+
+.checkbox-row input[type="checkbox"] {
+    margin: 0;
+}
 
 
 
@@ -117,6 +132,7 @@ button:hover {
     width: 60px;
     height: 34px;
     margin-top: .3rem;
+    margin-right: 20px;
 }
 
 .switch input {
@@ -158,7 +174,6 @@ input:checked + .slider::before {
 }
 
 
-
 body.dark-mode {
     background: #1c1417;        
     color: #ffeae7;             
@@ -190,6 +205,10 @@ body.dark-mode button:hover {
 body.dark-mode .fee-row,
 body.dark-mode .fee-total {
     color: #f9d7d5;
+}
+
+body.dark-mode .tooltip{
+  color:#dfded5 ;
 }
 
 
@@ -228,6 +247,45 @@ input[type="checkbox"]#includeSign:checked::after {
     transform: rotate(45deg);
 }
 
+
+.image-options {
+    display: flex;
+    flex-wrap: wrap;       
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.image-options label {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    cursor: pointer;
+    transition: transform 0.2s;
+    flex: 1 1 100px;        
+    max-width: 150px;      
+    text-align: center;     
+    padding: 0;
+    margin: 0;
+}
+
+.image-options img {
+    width: 100%;            
+    height: auto;           
+    max-width: 120px;    
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+.image-options input[type="radio"] {
+    display: none;
+}
+
+.image-options input[type="radio"]:checked + img {
+    border-color: #ff4081; 
+    transform: scale(1.05);
+}
 
 
 
@@ -333,4 +391,175 @@ input[type="checkbox"]#outdoorEvent:checked::after {
     border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+}
+
+
+input[type="checkbox"]#outdoorCandles {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff5f5;
+    border: 2px solid #991f34;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+input[type="checkbox"]#outdoorCandles:checked {
+    background-color: #991f34;
+}
+
+input[type="checkbox"]#outdoorCandles:checked::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 8px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+input[type="checkbox"]#outdoorPetals {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff5f5;
+    border: 2px solid #991f34;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+input[type="checkbox"]#outdoorPetals:checked {
+    background-color: #991f34;
+}
+
+input[type="checkbox"]#outdoorPetals:checked::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 8px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+input[type="checkbox"]#outdoorCarpet{
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff5f5;
+    border: 2px solid #991f34;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+input[type="checkbox"]#outdoorCarpet:checked {
+    background-color: #991f34;
+}
+
+input[type="checkbox"]#outdoorCarpet:checked::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 8px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+#petalAmount {
+    -webkit-appearance: none; 
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #f0c0c0; 
+    outline: none;
+}
+
+/* Chrome, Safari, Edge */
+#petalAmount::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #991f34;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    transition: background 0.3s ease;
+}
+
+#petalAmount::-webkit-slider-thumb:hover {
+    background: #ff5a75;
+}
+
+/* Firefox */
+#petalAmount::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #991f34;
+    cursor: pointer;
+    border: 2px solid #fff;
+}
+
+
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 0.3rem;
+    color: black;
+}
+
+.tooltiptext {
+  font-family:'Times New Roman', Times, serif;
+  font-weight: 100;
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* position above the question mark */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

@@ -10,7 +10,31 @@
     </head>
 <body>
     <div class="card">
-        <h2>Flower Wall Fee Calculator</h2>
+
+        <label class="switch" style="display: inline-block; margin-left: 1rem;">
+                <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+                <span class="slider"></span>
+        </label>
+
+        <h2>Event Flower Wall Pricing</h2>
+
+        <div class="image-options">
+            <label>
+                <input type="radio" name="flowerWall" value="wall1" checked>
+                <img src="wall1.png" alt="Flower Wall 1">
+                <p>Fresh Garden</p>
+            </label>
+            <label>
+                <input type="radio" name="flowerWall" value="wall2">
+                <img src="wall2.png" alt="Flower Wall 2">
+                <p>White Bloom</p>
+            </label>
+            <label>
+                <input type="radio" name="flowerWall" value="wall3">
+                <img src="wall3.png" alt="Flower Wall 3">
+                <p>Lover's Heart</p>
+            </label>
+        </div>
 
         <label for="customerAddress">Enter Hosting Address:</label>
         <input type="text" id="customerAddress" placeholder="Address Here">
@@ -18,12 +42,81 @@
         <label for="hours">For how many hours?</label>
         <input type="number" id="hours" min="1" max="12" placeholder="e.g. 2">
 
-        <label>Add neon LED sign?</label>
-        <input type="checkbox" id="includeSign">
+        <div class="checkbox-row">
+            <label for="includeSign">
+                Add a Neon LED Sign?
+                <span class="tooltip"> ?
+                    <span class="tooltiptext">
+                        Let us know your desired sign to check for availability. <br>
+                        Custom signs can be attained but come at your expense & yours to keep! 
+                    </span>
+                </span>
+            </label>
+            <input type="checkbox" id="includeSign">
+        </div>
 
-        <label for="outdoorEvent">Is this an outdoor event?</label>
-        <input type="checkbox" id="outdoorEvent">
+        <div class="checkbox-row">
+            <label for="outdoorCandles">
+                Add LED Candles?
+                <span class="tooltip">?
+                    <span class="tooltiptext">
+                        *Lovers Heart Recommended* <br>
+                        4 X-Large <br>
+                        4 Large  <br>
+                        4 Medium <br>
+                        12 Small
+                    </span>
+                </span>
+            </label>
+            <input type="checkbox" id="outdoorCandles">
+        </div>
 
+        <div class="checkbox-row">
+            <label for="outdoorCarpet">
+                Add Red Carpet?
+                <span class="tooltip"> ?
+                    <span class="tooltiptext">
+                        *Lovers Heart Recommended* <br>
+                        The carpet can range from 5 - 15ft. <br>
+                        If on dry grass or bad surfaces a tarp to cover is provided.
+                    </span>
+                </span>
+            </label>
+            <input type="checkbox" id="outdoorCarpet">
+        </div>
+
+        <div class="checkbox-row">
+            <label for="outdoorPetals">
+                Add Natural Petals?
+                <span class="tooltip"> ?
+                    <span class="tooltiptext">
+                        *Lovers Heart Recommended* <br>
+                        $20 - $40 → covers standing area <br> 
+                        45$ - $65 → covers standing area + aisle (recommended) <br> 
+                        $70+ → covers standing and aisle areas for a fuller look.
+                    </span>
+                </span>
+            </label>
+            <input type="checkbox" id="outdoorPetals">
+        </div>
+
+        <div id="petalSliderContainer" style="display: none; margin-top: 1rem;">
+            <label for="petalAmount">Dollars worth of Petals:</label>
+            <input type="range" id="petalAmount" min="20" max="100" value="50">
+            <span id="petalValue">$50 (recommended)</span>
+        </div>
+
+        <div class="checkbox-row">
+            <label for="outdoorEvent">
+                Is this an outdoor event?
+                <span class="tooltip"> ?
+                    <span class="tooltiptext">
+                        Outdoor setup may require extra time and materials, due to weather conditions.
+                    </span>
+                </span>
+            </label>
+            <input type="checkbox" id="outdoorEvent">
+        </div>
 
         <label for="discountCode">Have a discount code?</label>
         <input type="text" id="discountCode" placeholder="Enter code here">
@@ -37,10 +130,7 @@
                 class="contact-btn" style="display: none;"> Contact Us
             </a>
 
-            <label class="switch" style="display: inline-block; margin-left: 1rem;">
-                <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
-                <span class="slider"></span>
-            </label>
+            
         </div>
 
 
